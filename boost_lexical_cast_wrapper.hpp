@@ -16,7 +16,7 @@
 #define _BOOST_LEXICAL_CAST_WRAPPER_HPP_
 
 #include "boost/lexical_cast.hpp"
-#include "Misc/debugMsgs.h"
+#include "debugMsgs.h"
 
 template <typename TargetType, typename SourceType>
 int boost_lexical_cast_wrapper(const SourceType& src, TargetType* ptarget) {
