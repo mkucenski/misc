@@ -49,3 +49,6 @@ tests/testLibTimeUtils
 src/winEVTViewer
 src/winLNKViewer
 
+# Other
+README.html
+
