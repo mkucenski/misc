@@ -30,5 +30,7 @@
 #define TSK3_MACTIME_CTIME		9
 #define TSK3_MACTIME_CRTIME	10
 
+#define TSK3_MACTIME_AVAIL		11
+
 #endif //_TSK_MACTIME_H
 
