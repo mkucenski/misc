@@ -10,5 +10,5 @@ export PATH="~/Scripts:~/Scripts/macOS:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
 
-echo; fortune -a /Users/matthew.kucenski/.fortunes/; echo
+echo; fortune -a "$HOME/Development/MyGitHub/misc/fortunes/"; echo
 
