@@ -51,7 +51,7 @@ typedef struct {
 inline string getMessage(u_int32_t code, coded_message_t* table, u_int32_t size) { for (int i=0; i<size/sizeof(table[0]); i++) { if (table[i].code == code) { return table[i].message; } } return ""; }
 
 // Given multiples code values, return a comma-separated list of messages.
-inline string getMessages(u_int32_t codes, coded_message_t* table, u_int32_t size) { string rv; bool first=true; for (int i=0; i<size/sizeof(table[0]); i++) { if (table[i].code & codes > 0) { rv += (first ? "" : ",") + table[i].message; first=false; } } return rv; }
+inline string getMessages(u_int32_t codes, coded_message_t* table, u_int32_t size) { string rv; bool first=true; for (int i=0; i<size/sizeof(table[0]); i++) { if ((table[i].code & codes) > 0) { rv += (first ? "" : ",") + table[i].message; first=false; } } return rv; }
 
 // Given a message string, return the code value.
 inline u_int32_t getCode(string message, coded_message_t* table, u_int32_t size) { for (int i=0; i<size/sizeof(table[0]); i++) { if (table[i].message == message) { return table[i].code; } } return 0; }
