@@ -50,7 +50,7 @@ static coded_message_t FILE_ATTRIBUTES[] = {
 	{"FILE_ATTRIBUTE_SPARSE_FILE",			0x200,	""},
 	{"FILE_ATTRIBUTE_SYSTEM",					0x4,		""},
 	{"FILE_ATTRIBUTE_TEMPORARY",				0x100,	""},
-	{"FILE_ATTRIBUTE_VIRTUAL",,				0x10000,	""}
+	{"FILE_ATTRIBUTE_VIRTUAL",					0x10000,	""}
 };
 
 // SID STRUCTURE (https://blogs.msdn.microsoft.com/larryosterman/2004/09/01/what-is-this-thing-called-sid/)
