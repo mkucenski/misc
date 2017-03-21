@@ -17,8 +17,8 @@
 
 #include <sys/types.h>
 
-//Little-endian	->	PowerPC
-//Big-endian	->	Intel x86
+//Little-endian	->	Intel x86
+//Big-endian		->	PowerPC
 
 #define LITTLETOHOST16(var)	var = littleToHost16(var)
 #define LITTLETOHOST32(var)	var = littleToHost32(var)
@@ -28,26 +28,23 @@
 #define BIGTOHOST32(var)		var = bigToHost32(var)
 #define BIGTOHOST64(var)		var = bigToHost64(var)
 
+// Test the endian-ness of the running platform
+inline bool isBigEndian() { int i = 1; return ( (*(char*)&i) == 0 ? true : false); }
+inline bool isLittleEndian() { int i = 1; return ( (*(char*)&i) == 1 ? true : false); }
+
+// Swap endian-ness regardless of the running platform
 inline u_int16_t endianSwitch16(u_int16_t twobytes) { return (twobytes << 8) | (twobytes >> 8); }
 inline u_int32_t endianSwitch32(u_int32_t fourbytes) { return (u_int32_t)(endianSwitch16(fourbytes & 0xFFFF)) << 16 | endianSwitch16(fourbytes >> 16); }
 inline u_int64_t endianSwitch64(u_int64_t eightbytes) { return (u_int64_t)(endianSwitch32(eightbytes & 0xFFFFFFFF)) << 32 | endianSwitch32(eightbytes >> 32); }
 
-#ifdef _LITTLE_ENDIAN_
-	inline u_int16_t littleToHost16(u_int16_t twobytes) { return twobytes; }
-	inline u_int32_t littleToHost32(u_int32_t fourbytes) { return fourbytes; }
-	inline u_int64_t littleToHost64(u_int64_t eightbytes) { return eightbytes; }
+// Convert little-endian to whatever the running platform uses
+inline u_int16_t littleToHost16(u_int16_t twobytes) { if (isLittleEndian()) { return twobytes; } else { return endianSwitch16(twobytes); } }
+inline u_int32_t littleToHost32(u_int32_t fourbytes) { if (isLittleEndian()) { return fourbytes; } else { return endianSwitch32(fourbytes); } }
+inline u_int64_t littleToHost64(u_int64_t eightbytes) { if (isLittleEndian()) { return eightbytes; } else { return endianSwitch64(eightbytes); } }
 
-	inline u_int16_t bigToHost16(u_int16_t twobytes) { return endianSwitch16(twobytes); }
-	inline u_int32_t bigToHost32(u_int32_t fourbytes) { return endianSwitch32(fourbytes); }
-	inline u_int64_t bigToHost64(u_int64_t eightbytes) { return endianSwitch64(eightbytes); }
-#else //_LITTLE_ENDIAN_
-	inline u_int16_t littleToHost16(u_int16_t twobytes) { return endianSwitch16(twobytes); }
-	inline u_int32_t littleToHost32(u_int32_t fourbytes) { return endianSwitch32(fourbytes); }
-	inline u_int64_t littleToHost64(u_int64_t eightbytes) { return endianSwitch64(eightbytes); }
-
-	inline u_int16_t bigToHost16(u_int16_t twobytes) { return twobytes; }
-	inline u_int32_t bigToHost32(u_int32_t fourbytes) { return fourbytes; }
-	inline u_int64_t bigToHost64(u_int64_t eightbytes) { return eightbytes; }
-#endif //_LITTLE_ENDIAN_
+//Convert big-endian to whatever the running platform uses
+inline u_int16_t bigToHost16(u_int16_t twobytes) { if (isBigEndian()) { return twobytes; } else { return endianSwitch16(twobytes); } }
+inline u_int32_t bigToHost32(u_int32_t fourbytes) { if (isBigEndian()) { return fourbytes; } else { return endianSwitch32(fourbytes); } }
+inline u_int64_t bigToHost64(u_int64_t eightbytes) { if (isBigEndian()) { return eightbytes; } else { return endianSwitch64(eightbytes); } }
 
 #endif /*ENDIANSWITCH_H_*/
