@@ -19,6 +19,10 @@
 
 #include <sys/types.h>
 
+// Windows limits full paths to 260 characters total.
+// (https://msdn.microsoft.com/en-us/library/aa365247.aspx)
+#define WIN_MAX_PATH 260
+
 typedef u_int8_t  BYTE;
 typedef u_int16_t WORD;
 typedef u_int32_t DWORD;
