@@ -48,6 +48,7 @@ src/fw2mactime
 tests/testLibTimeUtils
 src/winEVTViewer
 src/winLNKViewer
+src/winUsnJrnlViewer
 
 # Other
 README.html
