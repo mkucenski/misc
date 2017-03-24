@@ -1,8 +1,9 @@
-C		= class object (class names/definitions don't require this)
+cls	= class object (class names/definitions don't require this)
 st 	= structure
-p 		= pointer
-pp 	= pointer to pointer
-pos 	= positional reference (e.g. file/stream position pointer or other offset)
+p_ 	= pointer
+pp_	= pointer to pointer
+pos 	= absolute positional reference (e.g. absolute file/stream position pointer)
+rpos	= relative positional reference (e.g. relative position within a block of a larger file/stream)
 str 	= string class
 sz		= pointer to first character of string
 c	 	= count (e.g. number of bytes read during an operation)
