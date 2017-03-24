@@ -21,7 +21,7 @@
 #include <iostream>
 using namespace std;
 
-// The goal of this code is to simplify the process matching flagged bits and their associated messages and details.
+// The goal of this code is to simplify the process matching flagged bits and their associated message and details.
 // Given a multi-bit value and defined table such as the following, you can find which bits are set and return the 
 // details. 
 //
@@ -42,32 +42,35 @@ using namespace std;
 // 		'getMessages(flags, USNJRNL_SOURCES, sizeof(USNJRNL_SOURCES));'
 
 typedef struct {
-	string message;
-	u_int32_t code;
-	string details;
+	string strMessage;
+	u_int32_t idCode;
+	string strDetails;
+	string strShort;
 } coded_message_t; 
 
 // Given a code value, find the corresponding message.
-inline string getMessage(u_int32_t code, coded_message_t* table, u_int32_t size) { for (int i=0; i<size/sizeof(table[0]); i++) { if (table[i].code == code) { return table[i].message; } } return ""; }
+inline string getMessage(u_int32_t idCode, coded_message_t* table, u_int32_t size) { for (int i=0; i<size/sizeof(table[0]); i++) { if (table[i].idCode == idCode) { return table[i].strMessage; } } return ""; }
+
+// Given a code value, find the corresponding short message.
+inline string getShort(u_int32_t idCode, coded_message_t* table, u_int32_t size) { for (int i=0; i<size/sizeof(table[0]); i++) { if (table[i].idCode == idCode) { return table[i].strShort; } } return ""; }
 
 // Given multiples code values, return a comma-separated list of messages.
-inline string getMessages(u_int32_t codes, coded_message_t* table, u_int32_t size) { string rv; bool first=true; for (int i=0; i<size/sizeof(table[0]); i++) { if ((table[i].code & codes) > 0) { rv += (first ? "" : ",") + table[i].message; first=false; } } return rv; }
+inline string getMessages(u_int32_t codes, coded_message_t* table, u_int32_t size) { string rv; bool first=true; for (int i=0; i<size/sizeof(table[0]); i++) { if ((table[i].idCode & codes) > 0) { rv += (first ? "" : ", ") + table[i].strMessage; first=false; } } return rv; }
+
+// Given multiples code values, return a comma-separated list of short messages.
+inline string getShorts(u_int32_t codes, coded_message_t* table, u_int32_t size) { string rv; bool first=true; for (int i=0; i<size/sizeof(table[0]); i++) { if ((table[i].idCode & codes) > 0) { rv += (first ? "" : ", ") + table[i].strShort; first=false; } } return rv; }
 
 // Given a message string, return the code value.
-inline u_int32_t getCode(string message, coded_message_t* table, u_int32_t size) { for (int i=0; i<size/sizeof(table[0]); i++) { if (table[i].message == message) { return table[i].code; } } return 0; }
+inline u_int32_t getCode(string strMessage, coded_message_t* table, u_int32_t size) { for (int i=0; i<size/sizeof(table[0]); i++) { if (table[i].strMessage == strMessage) { return table[i].idCode; } } return 0; }
 
 // Given a message string, return the details string.
-inline string getDetails(string message, coded_message_t* table, u_int32_t size) { for (int i=0; i<size/sizeof(table[0]); i++) { if (table[i].message == message) { return table[i].details; } } return ""; }
+inline string getDetails(string strMessage, coded_message_t* table, u_int32_t size) { for (int i=0; i<size/sizeof(table[0]); i++) { if (table[i].strMessage == strMessage) { return table[i].strDetails; } } return ""; }
 
 // Given a code value, return the details string.
-inline string getDetails(u_int32_t code, coded_message_t* table, u_int32_t size) { for (int i=0; i<size/sizeof(table[0]); i++) { if (table[i].code == code) { return table[i].details; } } return ""; }
+inline string getDetails(u_int32_t idCode, coded_message_t* table, u_int32_t size) { for (int i=0; i<size/sizeof(table[0]); i++) { if (table[i].idCode == idCode) { return table[i].strDetails; } } return ""; }
 
 // For a given set of codes, XOR out the known codes and return what's left. Assuming we know about all valid codes, the return value should be zero.
-inline u_int32_t findUnknownCodes(u_int32_t codes, coded_message_t* table, u_int32_t size) { for (int i=0; i<size/sizeof(table[0]); i++) { codes ^= table[i].code; } return codes; }
-
-#ifdef _DEBUG_
-inline void dumpTable(coded_message_t* table, u_int32_t size) { for (int i=0; i<size/sizeof(table[0]); i++) { DEBUG_INFO(table[i].code << ":" << table[i].message << ":" << table[i].details); } }
-#endif
+inline u_int32_t findUnknownCodes(u_int32_t codes, coded_message_t* table, u_int32_t size) { for (int i=0; i<size/sizeof(table[0]); i++) { codes ^= table[i].idCode; } return codes; }
 
 #endif /*CODED_MESSAGE_H_*/
 
