@@ -1,19 +1,18 @@
-cls	= class object (class names/definitions don't require this)
-st 	= structure
-p_ 	= pointer
-pp_	= pointer to pointer
-pos 	= absolute positional reference (e.g. absolute file/stream position pointer)
-rpos	= relative positional reference (e.g. relative position within a block of a larger file/stream)
-str 	= string class
-sz		= pointer to first character of string
 c	 	= count (e.g. number of bytes read during an operation)
-id		= unique identifier (e.g. an inode value)
+cls	= class object (class names/definitions don't require this)
+dtm	= date/time
 f		= flag (single bit e.g. boolean)
 fx		= flags (multi-bit)
-v		= value (number that is otherwise indescribable)
 i		= index
-rg		= array (range)
-dtm	= date/time
-
+id		= unique identifier (e.g. an inode value)
 m_ 	= class member
-
+p_ 	= pointer
+pos 	= absolute positional reference (e.g. absolute file/stream position pointer)
+pp_	= pointer to pointer
+rg		= array (range)
+rpos	= relative positional reference (e.g. relative position within a block of a larger file/stream)
+st 	= structure
+str 	= string class
+sz		= pointer to first character of string
+v		= value (number that is otherwise indescribable)
+z		= null/padding
