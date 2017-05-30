@@ -13,3 +13,6 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 echo; fortune -a "$HOME/Development/MyGitHub/misc/fortunes/"; echo
 
+# Increase maximum number of open files (needed for libewf/tsk)
+ulimit -n 2048
+
