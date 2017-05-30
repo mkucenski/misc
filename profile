@@ -14,10 +14,11 @@ if [ $(uname) == "Darwin" ]; then
 	export PATH="~/Development/opt/bin:~/Development/opt/sbin:$PATH"
 	export PATH="~/Scripts:~/Scripts/macOS:$PATH"
 	export PATH="~/Library/Python/2.7/bin:$PATH"
+
+	# Increase maximum number of open files (needed for libewf/tsk)
+	ulimit -n 2048
+
 fi
 
 echo; fortune -a "$HOME/Development/MyGitHub/misc/fortunes/"; echo
-
-# Increase maximum number of open files (needed for libewf/tsk)
-ulimit -n 2048
 
