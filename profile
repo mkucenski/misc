@@ -10,6 +10,7 @@ if [ $(uname) == "FreeBSD" ]; then
 fi
 
 if [ $(uname) == "Darwin" ]; then
+	alias ofh="$HOME/Scripts/macOS/open-finder-here.sh"
 	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 	export PATH="~/Development/opt/bin:~/Development/opt/sbin:$PATH"
 	export PATH="~/Scripts:~/Scripts/macOS:$PATH"
@@ -18,6 +19,7 @@ if [ $(uname) == "Darwin" ]; then
 	# Increase maximum number of open files (needed for libewf/tsk)
 	ulimit -n 2048
 
+	export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
 echo; fortune -a "$HOME/Development/MyGitHub/misc/fortunes/"; echo
