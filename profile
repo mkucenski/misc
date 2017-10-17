@@ -22,5 +22,8 @@ if [ $(uname) == "Darwin" ]; then
 	export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
+# If not running interactively, don't do anything else
+[ -z "$PS1" ] && return
+
 echo; fortune -a "$HOME/Development/MyGitHub/misc/fortunes/"; echo
 
