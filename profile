@@ -10,6 +10,7 @@ if [ $(uname) == "FreeBSD" ]; then
 fi
 
 if [ $(uname) == "Darwin" ]; then
+	alias ofh="$HOME/Scripts/macOS/open-finder-here.sh"
 	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 	export PATH="$HOME/Development/opt/bin:$HOME/Development/opt/sbin:$PATH"
 	export PATH="$HOME/Scripts:$HOME/Scripts/macOS:$PATH"
@@ -21,11 +22,14 @@ if [ $(uname) == "Darwin" ]; then
 	# Increase maximum number of open files (needed for libewf/tsk)
 	ulimit -n 2048
 
+<<<<<<< HEAD
 	# Python...
 	export PYTHONPATH="/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages"
 	export PYTHONPATH="$HOME/Library/Python/2.7/site-packages:$PYTHONPATH"
 
 	# Java
+=======
+>>>>>>> b8d381938eb6b46b0c43c52c98948480d786ac91
 	export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
