@@ -46,8 +46,9 @@ missing
 *.Po
 
 # Specific Project Binaries
-src/datatime
+build/src/datatime
 src/fw2mactime
+build/src/multi2mactime
 tests/testLibTimeUtils
 src/winEVTViewer
 src/winLNKViewer
