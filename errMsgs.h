@@ -1,4 +1,4 @@
-// Copyright 2007 Matthew A. Kucenski
+// Copyright 2018 Matthew A. Kucenski
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,25 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _DEBUGMSGS_H_
-#define _DEBUGMSGS_H_
+#ifndef _ERRMSGS_H_
+#define _ERRMSGS_H_
 
-#ifdef _DEBUG_
+// This functionality lets you output error/warning messages to either
+// cerr or a text file. By default, everything goes to cerr. If you call
+// logOpen(<filename>) that output will instead append to the specified
+// file. Don't forget logClose() in order to properly cleanup!
 
 #include <iostream>
 using namespace std;
 
 extern ostream* p_ostream;
 
-#include <iostream>
-#define DEBUG(msg)										(*p_ostream << "DEBUG(" << PACKAGE << "): " << msg << endl)
-#define DEBUG_HEX_DUMP(p_rgData, count, width)	fprintf(stderr, "DEBUG:     "); u_int8_t* p_rgCastData = (u_int8_t*)p_rgData; for (int i=0; i<count; i++) { fprintf(stderr, "%s%02x", (i % width == 0 ? "\n\t" : " "), p_rgCastData[i]); } fprintf(stderr, "\n");
+#define ERROR(msg)	(*p_ostream << "ERROR(" << PACKAGE << "): " << msg << endl)
+#define WARNING(msg)	(*p_ostream << "WARNING(" << PACKAGE << "): " << msg << endl)
 
-#else
+bool logOpen(string strFilename); 
+bool logClose();
 
-#define DEBUG(msg)
-#define DEBUG_HEX_DUMP(p_rgData, count, width)
-
-#endif
-
-#endif //_DEBUGMSGS_H_
+#endif //_ERRMSGS_H_

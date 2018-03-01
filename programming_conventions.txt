@@ -4,6 +4,7 @@ dtm	= date/time
 f		= flag (single bit e.g. boolean)
 fx		= flags (multi-bit)
 i		= index
+it		= iterator
 id		= unique identifier (e.g. an inode value)
 m_ 	= class member
 p_ 	= pointer

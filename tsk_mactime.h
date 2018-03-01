@@ -15,8 +15,13 @@
 #ifndef _TSK_MACTIME_H_
 #define _TSK_MACTIME_H_
 
-//TSK 3.0+: MD5|name|inode|mode_as_string|UID|GID|size|atime|mtime|ctime|crtime
-//          1  |2   |3    |4             |5  |6  |7   |8    |9    |10   |11
+// TSK 3.0+: MD5|name|inode|mode_as_string|UID|GID|size|atime|mtime|ctime|crtime
+//           1  |2   |3    |4             |5  |6  |7   |8    |9    |10   |11
+
+// DATATIME
+// |                    24| |      10| | 4| |        12| |     8| |     8| |        12| |...
+// Wed Jun 10 2009 21:45:11    2359352 ma.b r/rrwxrwxrwx        0        0  69058-128-4 vol3/Windows/SysWOW64/oobe/background.bmp
+//                             2359352 ma.b r/rrwxrwxrwx        0        0  69058-128-4 vol3/Windows/winsxs/x86_setup-uxwizard-clientimages_31bf3856ad364e35_6.1.7600.16385_none_48ada01d8ff36e68/background.bmp
 
 #define TSK3_MACTIME_MD5 		0
 #define TSK3_MACTIME_NAME 		1
