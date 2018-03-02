@@ -42,17 +42,9 @@ configure
 depcomp
 install-sh
 missing
-.deps
-*.Po
-
-# Specific Project Binaries
-build/src/datatime
-src/fw2mactime
-build/src/multi2mactime
-tests/testLibTimeUtils
-src/winEVTViewer
-src/winLNKViewer
-src/winUsnJrnlViewer
+samples/
+build/
+.deps/
 
 # Other
 README.html
