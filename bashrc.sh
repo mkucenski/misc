@@ -1,5 +1,4 @@
 # .bashrc is executed for interactive, but non-login shells (i.e. subsequent shells after the first login)
-#
 
 HISTFILESIZE=400000000
 HISTSIZE=10000
@@ -31,9 +30,6 @@ elif [ "$UNAME" == "Darwin" ]; then
 	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 	export PATH="/Applications/VMware OVF Tool:$PATH"
 	export PATH="$HOME/Python/bin:$PATH"
-
-	# Increase maximum number of open files (needed for libewf/tsk)
-	ulimit -n 2048
 
 	# Python...
 	export PYTHONPATH="/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages"
