@@ -10,6 +10,8 @@ shopt -s histappend
 export PATH="$HOME/Scripts:$PATH"
 export PATH="$HOME/Development/opt/bin:$HOME/Development/opt/sbin:$PATH"
 
+export MANPATH="$HOME/Development/opt/share/man:$MANPATH"
+
 UNAME="$(uname)"
 
 if [ "$UNAME" == "FreeBSD" ]; then
@@ -24,7 +26,6 @@ if [ "$UNAME" == "FreeBSD" ]; then
 	eval $(ssh-agent -s) > /dev/null
 
 elif [ "$UNAME" == "Darwin" ]; then
-
 	export PATH="$HOME/Scripts/macOS:$PATH"
 
 	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
@@ -37,6 +38,7 @@ elif [ "$UNAME" == "Darwin" ]; then
 
 	# Java
 	export JAVA_HOME=$(/usr/libexec/java_home)
+	alias bfg="java -jar /Users/matthew.kucenski/Development/GitHub/rtyley/bfg-repo-cleaner/bfg/target/bfg-1.13.1-SNAPSHOT-master-aeee9e3.jar"
 else
 	echo "Unknown Operating System!"
 fi
@@ -45,4 +47,7 @@ echo; fortune -a "$HOME/Development/MyGitHub/misc/fortunes/"; echo
 
 alias ll="ls -l"
 alias llh="ls -lh"
+alias cll="clear; ls -l"
+alias cllh="clear; ls -lh"
+alias rot13="tr 'A-Za-z' 'N-ZA-Mn-za-m'"
 
