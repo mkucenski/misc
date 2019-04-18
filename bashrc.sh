@@ -7,7 +7,7 @@ PROMPT_COMMAND="history -a"
 
 shopt -s histappend
 
-export PATH="$HOME/Scripts:$PATH"
+export PATH="$HOME/Scripts:$HOME/Scripts/tsk:$PATH"
 export PATH="$HOME/Development/opt/bin:$HOME/Development/opt/sbin:$PATH"
 
 export MANPATH="$HOME/Development/opt/share/man:$MANPATH"
@@ -38,7 +38,7 @@ elif [ "$UNAME" == "Darwin" ]; then
 
 	# Java
 	export JAVA_HOME=$(/usr/libexec/java_home)
-	alias bfg="java -jar /Users/matthew.kucenski/Development/GitHub/rtyley/bfg-repo-cleaner/bfg/target/bfg-1.13.1-SNAPSHOT-master-aeee9e3.jar"
+	alias bfg="java -jar $HOME/Development/GitHub/rtyley/bfg-repo-cleaner/bfg/target/bfg-1.13.1-SNAPSHOT-master-aeee9e3.jar"
 else
 	echo "Unknown Operating System!"
 fi
@@ -50,4 +50,11 @@ alias llh="ls -lh"
 alias cll="clear; ls -l"
 alias cllh="clear; ls -lh"
 alias rot13="tr 'A-Za-z' 'N-ZA-Mn-za-m'"
+
+
+PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
