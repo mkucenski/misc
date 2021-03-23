@@ -7,7 +7,7 @@ PROMPT_COMMAND="history -a"
 
 shopt -s histappend
 
-export PATH="$HOME/Scripts:$PATH"
+export PATH="$HOME/Scripts:$HOME/Scripts/macOS:$PATH"
 export PATH="$HOME/Development/opt/bin:$HOME/Development/opt/sbin:$PATH"
 
 UNAME="$(uname)"
