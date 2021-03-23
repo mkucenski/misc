@@ -1,0 +1,23 @@
+# macOS
+
+## General
+.DS_Store
+.AppleDouble
+
+## Thumbnails
+._*
+
+## Root Volume Files
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+## AFP Share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk

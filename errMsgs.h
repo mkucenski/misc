@@ -25,6 +25,7 @@ using namespace std;
 
 extern ostream* p_ostream;
 
+#define INFO(msg)		(*p_ostream << "INFO(" << PACKAGE << "): " << msg << endl)
 #define ERROR(msg)	(*p_ostream << "ERROR(" << PACKAGE << "): " << msg << endl)
 #define WARNING(msg)	(*p_ostream << "WARNING(" << PACKAGE << "): " << msg << endl)
 
