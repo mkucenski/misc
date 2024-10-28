@@ -1,4 +1,4 @@
 #!/bin/sh
 
-strfile -c % "$1" "fortune/$1.dat"
+strfile -c % "$1" "$1.dat"
 
