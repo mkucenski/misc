@@ -20,6 +20,8 @@
 // logOpen(<filename>) that output will instead append to the specified
 // file. Don't forget logClose() in order to properly cleanup!
 
+#include <meson.h>
+
 #include <iostream>
 using namespace std;
 
